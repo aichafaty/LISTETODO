@@ -48,10 +48,11 @@ form.addEventListener("click",(e)=>{
 })
 
 const creerCarteTache = (tache,index)=>{
+  const id="btn_cart-" + tache.id
 
 
     carte.insertAdjacentHTML("afterend",`
-    <div class="card w-80 border-light" style="border:solid;">
+    <div class="card w-80 border-light" style="border:solid;" id=${id}>
     <div class="card-body">
       <h5 class="card-title">${tache.titre}</h5>
       <p class="card-text">${tache.description}</p>
@@ -67,3 +68,8 @@ const creerCarteTache = (tache,index)=>{
     `
 
     )}
+
+    const liste = document.getElementById("lister")
+liste.addEventListener("click", (e) => {
+    window.location.href = "liste.html"
+})
