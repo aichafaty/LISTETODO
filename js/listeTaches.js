@@ -25,22 +25,40 @@ const API_URL = "https://ybudgskgnibqrqhnolzt.supabase.co/rest/v1/todoLISTEAPP"
 
 
 const creerCarteTache = (tache)=>{
+  const btnDetail = "btn_detail-" + tache.id
+  const idCart="btn_cart-" + tache.id
 
   listeTache.insertAdjacentHTML("afterend",`
-    <div class="card w-80 border-light" style="border:solid;" >
+    <div class="card w-80 border-light" style="border:solid;" id="${idCart}" >
     <div class="card-body">
       <h5 class="card-title">${tache.titre}</h5>
       <p class="card-text">${tache.description}</p>
       <p class="card-text">${tache.dateline}</p>
       <p class="card-text">${tache.priorite}</p>
      
-      <button class="bi bi-check-square btn-outline-success" style="width: 70px; height: 60px;">details</button>
+      <button class="bi bi-check-square btn-outline-success" style="width: 70px; height: 60px;"  id="${btnDetail}">details</button>
     </div>
   </div>
     
     `
 
-    )}
+    )
+  
+  
 
+    const detail=document.getElementById(btnDetail)
+   detail.addEventListener("click",(e)=>{
+     alert("okok")
+  let getid=btnDetail
+   console.log(detail);
+   console.log(window.location.pathname);
+  console.log(getid.substring(11));
+ localStorage.setItem("identifiantDetail",getid.substring(11))
+window.location.href="detail.html"
+  
+  })
+
+
+}
 
 
