@@ -29,7 +29,7 @@ const creerCarteTache = (tache)=>{
   const idCart="btn_cart-" + tache.id
 
   listeTache.insertAdjacentHTML("afterend",`
-    <div class="card w-80 border-light" style="border:solid;" id="${idCart}" >
+    <div class="carde justify-content-center" id="${idCart}" >
     <div class="card-body">
       <h5 class="card-title">${tache.titre}</h5>
       <p class="card-text">${tache.description}</p>
@@ -50,12 +50,12 @@ const creerCarteTache = (tache)=>{
    detail.addEventListener("click",(e)=>{
      alert("okok")
   let getid=btnDetail
-   console.log(detail);
-   console.log(window.location.pathname);
-  console.log(getid.substring(11));
- localStorage.setItem("identifiantDetail",getid.substring(11))
-window.location.href="detail.html"
-  
+    console.log(detail);
+    console.log(window.location.pathname);
+    console.log(getid.substring(11));
+    localStorage.setItem("identifiantDetail",getid.substring(11))
+    window.location.href="detail.html"
+    
   })
 
 

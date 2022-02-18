@@ -3,10 +3,12 @@ const API_URL = "https://ybudgskgnibqrqhnolzt.supabase.co/rest/v1/todoLISTEAPP"
 
 const form=document.getElementById("ajouter")
 const titre =document.getElementById("titre")
+const formulaire=document.getElementById("formulaire")
 const description =document.getElementById("description")
 const dateline=document.getElementById("dateline")
 const priorite=document.getElementById("priorite")
 const carte=document.getElementById("carte")
+const bouttonModifier=document.getElementById("modifier")
 const Tache=[]
 
 form.addEventListener("click",(e)=>{
@@ -16,6 +18,8 @@ form.addEventListener("click",(e)=>{
     let descriptionSaisi=description.value
     let datelineSaisi=dateline.value
     let prioriteSaisi=priorite.value
+
+   
 
     let newTache={
         titre:titreSaisi,
@@ -45,31 +49,160 @@ form.addEventListener("click",(e)=>{
     dateline.value=""
     priorite.value=""
 
+    
+
 })
 
+
+
+
+
 const creerCarteTache = (tache,index)=>{
-  const id="btn_cart-" + tache.id
-
-
+    const id = new Date().getTime().toString()
+    
+    const btnModifier = "btn_modifier-" + tache.creerAjout
+    const btnTacheFin = "btn_supprimer-" + id
+   // const idCarte= "btn_cart-" + id
+  
+   
     carte.insertAdjacentHTML("afterend",`
-    <div class="card w-80 border-light" style="border:solid;" id=${id}>
+    <div class="card w-80 border-light" style="border:solid;" id="${id}">
     <div class="card-body">
-      <h5 class="card-title">${tache.titre}</h5>
+      <h5 class="card-titre" >${tache.titre}</h5>
       <p class="card-text">${tache.description}</p>
-      <p class="card-text">${tache.dateline}</p>
-      <p class="card-text">${tache.priorite}</p>
+      <p class="card-texte">${tache.dateline}</p>
+      <p class="card-textes">${tache.priorite}</p>
       
-      <button class="bi bi-pencil btn-outline-secondary" style=" width: 70px; height: 60px;" ></button>
-      <button class="bi bi-x-square btn-outline-danger" style="width: 70px; height: 60px;" ></button>
-      <button class="bi bi-check-square btn-outline-success" style="width: 70px; height: 60px;"></button>
+      <button class="bi bi-pencil btn-outline-secondary" style=" width: 70px; height: 60px;" id=${btnModifier}></button>
+     
+      <button class="bi bi-check-square btn-outline-success" style="width: 70px; height: 60px;" id=${btnTacheFin}></button>
     </div>
   </div>
     
     `
 
-    )}
+    )
+      
+     const idCarte=document.getElementById(id)
+      const modifierBtn=document.getElementById(btnModifier)
+      const tacheFinBtn=document.getElementById(btnTacheFin)
+      
+        console.log(idCarte);
 
-    const liste = document.getElementById("lister")
-liste.addEventListener("click", (e) => {
-    window.location.href = "liste.html"
-})
+    //    supprimerBtn.addEventListener("click",(e)=>{
+    //      e.preventDefault()
+    //     let carte=cartId
+    //     Tache.splice(index,1)
+    //    })
+
+       modifierBtn.addEventListener("click", (e) => {
+        e.preventDefault()
+        alert("je suis la")
+        console.log(idCarte);
+        ajouter.classList.add('d-none')
+        bouttonModifier.classList.remove('d-none')
+        
+        //<button type="button">Modifier</button>
+        modifierBtn.dataset.idCarte= id
+        console.log(modifierBtn);
+        console.log(id);
+        //<button type="button" data-id="3">Modifier</button>
+        modifierBtn.dataset.index = index
+        //<button type="button" data-id="3" data-index="4">Modifier</button>
+        //bouttonModifier.dataset
+        //{id:3,index:4}
+
+            
+        //alert("on est le")
+        const Titre = idCarte.querySelector(".card-titre").textContent
+        
+      
+        const Description = idCarte.querySelector(".card-text").textContent
+      
+        const Dateline =idCarte.querySelector(".card-texte").textContent
+       
+        const Priorite = idCarte.querySelector(".card-textes").textContent
+       
+        titre.value=Titre
+        description.value=Description
+        dateline.value=Dateline
+        priorite.value=Priorite
+    
+        const card = document.getElementById(id)
+            console.log(card);
+        
+        bouttonModifier.addEventListener("click", (e) => {
+            e.preventDefault()
+            alert("maguiniii")
+           
+            const id = e.target.dataset.id
+            const index = e.target.dataset.index
+           
+             
+              
+        
+            //Recuperer les elements de la carte  
+            const ancientitre = card.querySelector(".card-titre")
+            console.log(ancientitre);
+            const anciendescription = card.querySelector(".card-text")
+            const anciendateline = card.querySelector(".card-texte")
+            const ancienpriorite = card.querySelector(".card-texte")
+            //Mettre à jour la carte
+           
+            ancientitre.textContent = titre.value
+            anciendescription.textContent = description.value
+            anciendateline.textContent=dateline.value
+            ancienpriorite.textContent = priorite.value
+            
+            // Tache[index].titre = titre.value
+            // Tache[index].description =description.value
+            // Tache[index].dateline = dateline.value
+            // Tache[index].priorite = priorite.value
+        
+        
+            //reset permet de vider le formulaire
+            formulaire.reset()
+            e.target.classList.add("d-none")
+            ajouter.classList.remove("d-none")
+        
+        })
+        
+     })
+
+
+   
+
+}
+            const liste = document.getElementById("lister")
+            liste.addEventListener("click", (e) => {
+                window.location.href = "liste.html"
+            })
+
+
+
+    function verifier() {
+    
+
+        let titreSaisi=titre.value
+        let descriptionSaisi=description.value
+        let datelineSaisi=dateline.value
+        let prioriteSaisi=priorite.value
+    
+        console.log("titreSaisi = " + titre.value);
+        console.log("description = " + description.value);
+        console.log("dateline = " + dateline.value);
+        console.log("priorite = " + priorite.value);
+    
+        localStorage.setItem("titre", titreSaisi)
+        localStorage.setItem("description", descriptionSaisi)
+        localStorage.setItem("dateline", datelineSaisi)
+        localStorage.setItem("priorite", prioriteSaisi)
+    
+        localStorage.getItem("titre")
+        localStorage.getItem("description")
+        localStorage.getItem("dateline")
+        localStorage.getItem("priorite")
+  
+    
+    }
+    

@@ -3,3 +3,19 @@
     left: 480px;
     font-size: 40px;
 }
+.card{
+    
+   
+    
+}
+body{
+    background-color: rgb(251, 249, 249);
+}
+.carde{
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(214, 188, 221);
+    width: 500px;
+    
+}
