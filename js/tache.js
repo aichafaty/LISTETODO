@@ -19,7 +19,7 @@ form.addEventListener("click",(e)=>{
     let datelineSaisi=dateline.value
     let prioriteSaisi=priorite.value
 
-   
+      
 
     let newTache={
         titre:titreSaisi,
@@ -73,11 +73,12 @@ const creerCarteTache = (tache,index)=>{
       <p class="card-texte">${tache.dateline}</p>
       <p class="card-textes">${tache.priorite}</p>
       
-      <button class="bi bi-pencil btn-outline-secondary" style=" width: 70px; height: 60px;" id=${btnModifier}></button>
+      <button class="bi-pencil" id=${btnModifier}></button>
      
-      <button class="bi bi-check-square btn-outline-success" style="width: 70px; height: 60px;" id=${btnTacheFin}></button>
+      <button class="bi-check-square" id=${btnTacheFin}></button>
     </div>
-  </div>
+  </div><br>
+  
     
     `
 
@@ -171,7 +172,7 @@ const creerCarteTache = (tache,index)=>{
     tacheFinBtn.addEventListener("click",(e)=>{
         e.preventDefault()
         alert("finTache")
-        idCarte.style.background="green"
+        idCarte.style.background="#255A01"
        
         modifierBtn.style.visibility="hidden"
 
@@ -187,6 +188,10 @@ const creerCarteTache = (tache,index)=>{
 
     function verifier() {
     
+        if(titre=""){
+            alert("veuillez remplir toute les champs")
+        }
+        
 
         let titreSaisi=titre.value
         let descriptionSaisi=description.value

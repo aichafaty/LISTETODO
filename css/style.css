@@ -1,6 +1,7 @@
 #nav{
+    margin-top: 0%;
     position: relative;
-    left: 480px;
+    left: 800px;
     font-size: 40px;
 }
 .card{
@@ -9,13 +10,15 @@
     
 }
 body{
-    background-color: rgb(251, 249, 249);
+    background-color: #dfdfdf;
 }
 .carde{
     justify-content: center;
     padding: 10px;
     margin: 10px;
-    background-color: rgb(214, 188, 221);
+    background-color: rgba(255, 255, 255, 0.801);
     width: 500px;
+    border: solid #CE0033;
+    
     
 }

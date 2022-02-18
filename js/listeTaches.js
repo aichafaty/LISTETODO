@@ -36,7 +36,7 @@ const creerCarteTache = (tache)=>{
       <p class="card-text">${tache.dateline}</p>
       <p class="card-text">${tache.priorite}</p>
      
-      <button class="bi bi-check-square btn-outline-success" style="width: 70px; height: 60px;"  id="${btnDetail}">details</button>
+      <button class="bi-check-square" id="${btnDetail}"></button>
     </div>
   </div>
     
