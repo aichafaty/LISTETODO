@@ -87,7 +87,7 @@ const creerCarteTache = (tache,index)=>{
       const modifierBtn=document.getElementById(btnModifier)
       const tacheFinBtn=document.getElementById(btnTacheFin)
       
-        console.log(idCarte);
+        console.log(tacheFinBtn);
 
     //    supprimerBtn.addEventListener("click",(e)=>{
     //      e.preventDefault()
@@ -95,7 +95,7 @@ const creerCarteTache = (tache,index)=>{
     //     Tache.splice(index,1)
     //    })
 
-       modifierBtn.addEventListener("click", (e) => {
+    modifierBtn.addEventListener("click", (e) => {
         e.preventDefault()
         alert("je suis la")
         console.log(idCarte);
@@ -166,12 +166,17 @@ const creerCarteTache = (tache,index)=>{
             ajouter.classList.remove("d-none")
         
         })
+    })
+       
+    tacheFinBtn.addEventListener("click",(e)=>{
+        e.preventDefault()
+        alert("finTache")
+        idCarte.style.background="green"
+       
+        modifierBtn.style.visibility="hidden"
+
         
-     })
-
-
-   
-
+    })
 }
             const liste = document.getElementById("lister")
             liste.addEventListener("click", (e) => {
